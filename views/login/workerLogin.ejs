@@ -1,1 +1,17 @@
-<h1>This is our worker login page</h1>
+<%- include("../partials/header"); -%>
+
+<div class="container">
+    <h1 class="text-center mt-1">Worker Login</h1>
+    <form class='shadow p-3 mb-5 bg-white rounded mt-5'>
+        <div class="form-group">
+            <label for="inputEmail4">Email</label>
+            <input type="email" class="form-control"  name="email" id="inputEmail4" placeholder="worker@gmail.com">
+        </div>
+        <div class="form-group">
+            <label for="inputPassword4">Password</label>
+            <input type="password" class="form-control"  name="password" id="inputPassword4" placeholder="password">
+        </div>
+    </form>
+</div>
+
+<%- include("../partials/footer"); -%>

@@ -1,1 +1,57 @@
-<h1>this is employer sign up page</h1>
+<%- include("../partials/header"); -%>
+
+<div class="container">
+    <h1 class="text-center mt-1">Employee SignUp</h1>
+    <form class='shadow p-3 mb-5 bg-white rounded mt-5'>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">First Name</label>
+          <input type="text" class="form-control" name="firstName" placeholder="Walter">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">Last Name</label>
+          <input type="text" class="form-control" name="lastName" placeholder="White">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">Email</label>
+          <input type="email" class="form-control"  name="email" id="inputEmail4" placeholder="walterwhite@gmail.com">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputPassword4">Password</label>
+          <input type="password" class="form-control" name="password" id="inputPassword4" placeholder="Password">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputAddress">Address</label>
+        <input type="text" class="form-control" name="address" id="inputAddress" placeholder="1234 Main St">
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputCity">City</label>
+          <input type="text" class="form-control" name="city" id="inputCity">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputState">State</label>
+          <select id="inputState" class="form-control">
+            <option selected>Choose...</option>
+            <option>...</option>
+          </select>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="inputZip">Zip</label>
+          <input type="text" class="form-control" name="zip" id="inputZip">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="gridCheck">
+          <label class="form-check-label" for="gridCheck">
+            I accept terms and conditions
+          </label>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Sign in</button>
+    </form>
+</div>
+
+<%- include("../partials/footer"); -%>
