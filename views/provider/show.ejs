@@ -1,21 +1,24 @@
-<div id="header">
-    <%- include("../partials/header"); -%>
-</div>
+<%- include("../partials/header"); -%>
 
 <link rel="stylesheet" type="text/css" href="/stylesheets/sideBar.css">
 
 <div>
-    <div id="mySidenav" class="sidenav">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-      <a href="#">About</a>
-      <a href="#">Services</a>
+    <div id="mySidenav" class="sidenav" style="margin-top:57px">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
+      <a href="#">Your Profile</a>
+      <a href="#">Recruiter Profile</a>
+      <a href="#">Blog</a>
       <a href="#">Clients</a>
       <a href="#">Contact</a>
     </div>
     
      <!--Use any element to open the sidenav -->
-    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;open</span>
-    
+    <span style="font-size:30px;cursor:pointer;height:100%" onclick="openNav()">
+        <div id="sidebar" class="sideBar" style="margin-top:1px">
+            <div id="button"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></div>
+        </div>
+    </span>
+</div>
      <!--Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
     <div id="main">
         <div class="container">
@@ -23,23 +26,29 @@
         </div>
     </div>
     
-    
+<div>
     <script>
         function openNav() {
+          document.getElementById("sidebar").style.width = "0px";
           document.getElementById("mySidenav").style.width = "250px";
           document.getElementById("main").style.marginLeft = "250px";
-          document.getElementById("header").style.marginLeft = "250px";
           document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+          $("#button").toggle();
         }
         
         /* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
         function closeNav() {
-          document.getElementById("mySidenav").style.width = "0";
-          document.getElementById("main").style.marginLeft = "0";
-          document.getElementById("header").style.marginLeft = "0";
+          
+          document.getElementById("mySidenav").style.width = "0px";
+          document.getElementById("main").style.marginLeft = "0px";
           document.body.style.backgroundColor = "white";
+          document.getElementById("sidebar").style.width = "40px";
+          $("#button").toggle();
         }
-    
+        
+        // function timeFunction() {
+        //     setTimeout(function(){ onmouseout="closeNav()"; }, 5000);
+        // }
     </script>
 </div>
 
