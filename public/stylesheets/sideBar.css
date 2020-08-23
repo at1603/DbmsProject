@@ -1,3 +1,10 @@
+.sideBar{
+  width: 40px;
+  position: fixed;
+  z-index: 1;
+  background-color: #111;
+  height: 100%;
+}
 /* The side navigation menu */
 .sidenav {
   height: 100%; /* 100% Full-height */
@@ -43,6 +50,16 @@
 #main {
   transition: margin-left .5s;
   padding: 20px;
+}
+
+#button{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-10%);
+  transform: translateY(-90%);
+  transition:margin-left 0.6s;
+  padding: 7px;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
