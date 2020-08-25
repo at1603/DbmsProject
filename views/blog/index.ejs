@@ -1,0 +1,34 @@
+ <%- include("../partials/header"); -%>
+ 
+ <div class="container" style="margin: 25px auto">
+    <header class="jumbotron shadow p-5 mb-5 rounded">
+        <div class="container">
+            <h1>Welcome to YelpCamp!</h1>
+            <p>Small collection of Campgrounds</p>
+            <p>
+                <a href="/blogs/new" class=" btn btn-primary btn-lg">Add new Blog</a>
+            </p>
+            
+        </div>
+    </header>
+
+    <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+        <% blogs.forEach(function(blog){ %>
+            <div class="col-md-3 col-sm-6">
+                <div  class= "card shadow mb-5 rounded">
+                    <div class=" card-img-top">
+                        <img src="<%= blog.image%>" class="img-fluid">
+                    </div>
+                    <div class="card-title">
+                        <h4><%= blog.name %></h4>  
+                    </div>
+                    <p>
+                        <a href="/blogs/<%= blog._id%>" class="btn btn-primary">More Info</a>
+                    </p>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+
+<%- include("../partials/footer"); -%>
