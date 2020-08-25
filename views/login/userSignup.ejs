@@ -1,0 +1,125 @@
+<%- include("../partials/header"); -%>
+
+<script type="text/javascript">
+  function checkAdmin(val)
+  {
+      if(val==="admin")
+         document.getElementById('role').style.display='block';
+      else
+         document.getElementById('role').style.display='none'; 
+  }
+</script>
+
+<div class="container">
+    <h1 class="text-center mt-1">SignUp</h1>
+    <form action="/register" method="POST" class='shadow p-3 mb-1 bg-white rounded mt-5'>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">First Name</label>
+          <input type="text" class="form-control" name="firstName" placeholder="Walter">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">Last Name</label>
+          <input type="text" class="form-control" name="lastName" placeholder="White">
+        </div>
+        <div class="form-group col-md-6">
+          <label>Username</label>
+          <input type="text" class="form-control" name="username" placeholder="Heisenberg">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputPassword4">Password</label>
+          <input type="password" class="form-control" name="password" id="inputPassword4" placeholder="Password">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">Email</label>
+          <input type="email" class="form-control"  name="email" id="inputEmail4" placeholder="walterwhite@gmail.com">
+        </div>
+        <div class="form-group col-md-6">
+          <label>Profile image</label>
+          <input type="text" class="form-control" name="avatar" placeholder="Profile Pic url">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputAddress">Address</label>
+        <input type="text" class="form-control" name="address" id="inputAddress" placeholder="1234 Main St">
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputCity">City</label>
+          <input type="text" class="form-control" name="city" id="inputCity">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputState">State</label>
+          <select id="inputState" class="form-control" name="state">
+            <option selected>Choose...</option>
+            <option value="Andhra Pradesh">Andhra Pradesh</option>
+            <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+            <option value="Assam">Assam</option>
+            <option value="Bihar">Bihar</option>
+            <option value="Chandigarh">Chandigarh</option>
+            <option value="Chhattisgarh">Chhattisgarh</option>
+            <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+            <option value="Daman and Diu">Daman and Diu</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Lakshadweep">Lakshadweep</option>
+            <option value="Puducherry">Puducherry</option>
+            <option value="Goa">Goa</option>
+            <option value="Gujarat">Gujarat</option>
+            <option value="Haryana">Haryana</option>
+            <option value="Himachal Pradesh">Himachal Pradesh</option>
+            <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+            <option value="Jharkhand">Jharkhand</option>
+            <option value="Karnataka">Karnataka</option>
+            <option value="Kerala">Kerala</option>
+            <option value="Madhya Pradesh">Madhya Pradesh</option>
+            <option value="Maharashtra">Maharashtra</option>
+            <option value="Manipur">Manipur</option>
+            <option value="Meghalaya">Meghalaya</option>
+            <option value="Mizoram">Mizoram</option>
+            <option value="Nagaland">Nagaland</option>
+            <option value="Odisha">Odisha</option>
+            <option value="Punjab">Punjab</option>
+            <option value="Rajasthan">Rajasthan</option>
+            <option value="Sikkim">Sikkim</option>
+            <option value="Tamil Nadu">Tamil Nadu</option>
+            <option value="Telangana">Telangana</option>
+            <option value="Tripura">Tripura</option>
+            <option value="Uttar Pradesh">Uttar Pradesh</option>
+            <option value="Uttarakhand">Uttarakhand</option>
+            <option value="West Bengal">West Bengal</option>
+          </select>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="inputZip">Zip</label>
+          <input type="text" class="form-control" name="zip" id="inputZip">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputRole">Role</label>
+            <select id="inputRole" class="form-control" name="role" onchange='checkAdmin(this.value)'>
+              <option selected>Choose...</option>
+              <option value="employer">Employer</option>
+              <option value="worker">Worker</option>
+              <option value="admin">Admin</option>
+            </select>
+        </div>
+        <div class="form-group col-md-6" id="role" style='display:none'>
+          <label for="adminCode">Admin Code</label>
+          <input type="password" class="form-control" name="adminCode" placeholder="Admin Code(optional)">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="gridCheck" required>
+          <label class="form-check-label" for="gridCheck">
+            I accept <a href="#/conditions">terms and conditions</a>
+          </label>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Sign in</button>
+    </form>
+    
+    <h5>Already have an account! <a href="#">Login</a></h5>
+</div>
+
+<%- include("../partials/footer"); -%>
