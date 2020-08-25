@@ -4,16 +4,18 @@ var express = require("express"),
     passport = require("passport"),
     LocalStrategy = require("passport-local"),
     path  = require("path"),
-    mongoose = require("mongoose");
+    mongoose = require("mongoose"),
+    Blog = require("./models/blogSchema");
 
 var Employee = require("./models/employeeSchema"),
     Employer = require("./models/employerSchema"),
     Blog = require("./models/blogSchema");
     
 var indexRoutes = require('./routes/index'),
-    authRoutes = require("./routes/authRoutes");
+    authRoutes = require("./routes/authRoutes"),
+    blogRoutes = require("./routes/blogRoutes");
 
-mongoose.connect("mongodb://localhost/jobpost", {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect("mongodb://localhost:27017/jobpost", {useNewUrlParser: true, useUnifiedTopology: true});
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname + '/public')));
@@ -27,6 +29,7 @@ app.use(express.static(path.join(__dirname + '/public')));
 
 app.use(indexRoutes);
 app.use(authRoutes);
+app.use(blogRoutes);
 
 
 app.listen(process.env.PORT, process.env.IP, function(){
