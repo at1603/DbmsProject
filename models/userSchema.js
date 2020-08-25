@@ -1,7 +1,7 @@
 var mongoose = require("mongoose"),
     passportLocalMongoose = require("passport-local-mongoose");
 
-var employerSchema = new mongoose.Schema({
+var userSchema = new mongoose.Schema({
    firstName: String,
    lastName: String, 
    username: String,
@@ -10,9 +10,12 @@ var employerSchema = new mongoose.Schema({
    avatar:String,
    address:String,
    state: String,
-   city: String
+   city: String,
+   zip:String,
+   role:String,
+   isAdmin: {type: Boolean, default: false}
 });
 
-employerSchema.plugin(passportLocalMongoose);
+userSchema.plugin(passportLocalMongoose);
 
-module.exports = mongoose.model("Employer", employerSchema);
+module.exports = mongoose.model("User", userSchema);
