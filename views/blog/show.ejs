@@ -1,5 +1,52 @@
 <%- include("../partials/header"); -%>
 
-<h1>Show page</h1>
+
+<link rel="stylesheet" type="text/css" href="/stylesheets/sideBar.css">
+<link rel="stylesheet" type="text/css" href="/stylesheets/show.css">
+
+<div>
+    <div id="mySidenav" class="sidenav" style="margin-top:57px">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
+      <a href="#">Home</a>
+      <a href="#">Technology</a>
+      <a href="#">Entertainment</a>
+      <a href="#">Food</a>
+    </div>
+    
+     <!--Use any element to open the sidenav -->
+    <span style="font-size:30px;cursor:pointer;height:100%" onclick="openNav()">
+        <div id="sidebar" class="sideBar" style="margin-top:1px">
+            <div id="button"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></div>
+        </div>
+    </span>
+</div>
+
+ <!--Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+<div id="main">
+   hello
+</div>
+    
+<div>
+    <script>
+        function openNav() {
+          document.getElementById("sidebar").style.width = "0px";
+          document.getElementById("mySidenav").style.width = "250px";
+          document.getElementById("main").style.marginLeft = "250px";
+          document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+          $("#button").toggle();
+        }
+        
+        /* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
+        function closeNav() {
+          
+          document.getElementById("mySidenav").style.width = "0px";
+          document.getElementById("main").style.marginLeft = "0px";
+          document.body.style.backgroundColor = "white";
+          document.getElementById("sidebar").style.width = "40px";
+          $("#button").toggle();
+        }
+        
+    </script>
+</div>
 
 <%- include("../partials/footer"); -%>
