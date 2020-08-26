@@ -42,7 +42,8 @@
             </div>
             <div class="col-md-4 text-center" id="intro">
                 <img src="https://image.flaticon.com/icons/png/512/16/16363.png" class="img-fluid rounded-circle border" alt="User Profile Image" style="width:40%">
-                <h3>Abhinav Tripathi</h3>
+                <h3><%=user.username%></h3>
+                <span><em>Joined <%= moment(user.joinedAt).fromNow()%></em></span>
             </div>
         </div>
     </div>
