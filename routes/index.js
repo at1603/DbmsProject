@@ -21,11 +21,4 @@ router.get("/policy/show", function(req, res){
    res.render("policy/show")
 });
 
-router.get("/provider/show", function(req, res){
-   res.render("provider/show")
-});
-
-router.get("/seeker/show", function(req, res){
-   res.render("seeker/show")
-});
 module.exports = router;
