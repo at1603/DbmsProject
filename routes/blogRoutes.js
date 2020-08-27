@@ -14,7 +14,7 @@ router.get("/blogs", function(req, res){
 });
 
 router.post("/blogs", function(req,res){
-    var name= req.body.name;
+    var title= req.body.title;
     var image= req.body.image;
     var desc = req.body.description;
     var author = {
@@ -22,7 +22,7 @@ router.post("/blogs", function(req,res){
         username: req.user.username
     };
     var genre=req.body.genre;
-    var newBlog = {name: name, image: image, description:desc, author:author,genre:genre};
+    var newBlog = {title:title, image: image, description:desc, author:author,genre:genre};
     Blog.create(newBlog, function(err, newlyCreated){
       if(err){
           console.log(err);
