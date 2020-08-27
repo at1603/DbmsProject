@@ -1,34 +1,78 @@
  <%- include("../partials/header"); -%>
- 
- <div class="container" style="margin-top: 5rem ">
-    <header class="jumbotron shadow p-5 mb-5 rounded">
-        <div class="container">
-            <h1>Share your knowledge treasure!</h1>
-            <p>Small collection of Campgrounds</p>
-            <p>
-                <a href="/blogs/new" class=" btn btn-primary btn-lg">Add new Blog</a>
-            </p>
-            
-        </div>
-    </header>
 
-    <div class="row text-center" style="display:flex; flex-wrap: wrap;">
-        <% blogs.forEach(function(blog){ %>
-            <div class="col-md-3 col-sm-6">
-                <div  class= "card shadow mb-5 rounded">
-                    <div class=" card-img-top">
-                        <img src="<%= blog.image%>" class="img-fluid">
-                    </div>
-                    <div class="card-title">
-                        <h4><%= blog.name %></h4>  
-                    </div>
-                    <p>
-                        <a href="/blogs/<%= blog._id%>" class="btn btn-primary">More Info</a>
-                    </p>
-                </div>
+<link rel="stylesheet" type="text/css" href="/stylesheets/sideBar.css">
+
+<div>
+    <div id="mySidenav" class="sidenav" style="margin-top:57px">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
+      <a href="#">Home</a>
+      <a href="#">Technology</a>
+      <a href="#">Entertainment</a>
+      <a href="#">Food</a>
+    </div>
+    
+     <!--Use any element to open the sidenav -->
+    <span style="font-size:30px;cursor:pointer;height:100%" onclick="openNav()">
+        <div id="sidebar" class="sideBar" style="margin-top:1px">
+            <div id="button"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></div>
+        </div>
+    </span>
+</div>
+
+ <!--Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+<div id="main">
+    <div class="container" style="margin-top: 5rem ">
+        <header class="jumbotron shadow p-5 mb-5 rounded">
+            <div class="container">
+                <h1>Share your knowledge treasure!</h1>
+                <p>Small collection of Campgrounds</p>
+                <p>
+                    <a href="/blogs/new" class=" btn btn-primary btn-lg">Add new Blog</a>
+                </p>
+                
             </div>
-        <% }); %>
+        </header>
+        <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+            <% blogs.forEach(function(blog){ %>
+                <div class="col-md-3 col-sm-6">
+                    <div  class= "card shadow mb-5 rounded">
+                        <div class=" card-img-top">
+                            <img src="<%= blog.image%>" class="img-fluid">
+                        </div>
+                        <div class="card-title">
+                            <h4><%= blog.name %></h4>  
+                        </div>
+                        <p>
+                            <a href="/blogs/<%= blog._id%>" class="btn btn-primary">More Info</a>
+                        </p>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
     </div>
 </div>
+    
+<div>
+    <script>
+        function openNav() {
+          document.getElementById("sidebar").style.width = "0px";
+          document.getElementById("mySidenav").style.width = "250px";
+          document.getElementById("main").style.marginLeft = "250px";
+          document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+          $("#button").toggle();
+        }
+        
+        /* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
+        function closeNav() {
+          
+          document.getElementById("mySidenav").style.width = "0px";
+          document.getElementById("main").style.marginLeft = "0px";
+          document.body.style.backgroundColor = "white";
+          document.getElementById("sidebar").style.width = "40px";
+          $("#button").toggle();
+        }
+        
+    </script>
+</div> 
 
 <%- include("../partials/footer"); -%>
