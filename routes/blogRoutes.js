@@ -1,6 +1,7 @@
 var express = require("express"),
     router = express.Router();
-var Blog = require("../models/blogSchema");
+var Blog = require("../models/blogSchema"),
+    middleware = require('../middleware');
 
 
 router.get("/blogs", function(req, res){
@@ -13,7 +14,7 @@ router.get("/blogs", function(req, res){
     });
 });
 
-router.post("/blogs", function(req,res){
+router.post("/blogs", middleware.isLoggedIn, function(req,res){
     var title= req.body.title;
     var image= req.body.image;
     var desc = req.body.description;
@@ -32,7 +33,7 @@ router.post("/blogs", function(req,res){
     });
 });
 //new blog page
-router.get("/blogs/new", function(req, res){
+router.get("/blogs/new", middleware.isLoggedIn, function(req, res){
    res.render("blog/new"); 
 });
 
