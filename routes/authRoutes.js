@@ -1,7 +1,8 @@
 var express = require("express"),
     router = express.Router(),
     User = require("../models/userSchema"),
-    passport = require('passport');
+    passport = require('passport'),
+    middleware = require('../middleware');
 
 //Login get requests
 router.get('/userLogin', function(req,res){
@@ -19,7 +20,7 @@ router.post("/userLogin", passport.authenticate("local",
 
 //logout 
 
-router.get("/logout", function(req,res){
+router.get("/logout", middleware.isLoggedIn, function(req,res){
    req.logout();
    // req.flash("success", "Logged Out");
    res.redirect("/");
