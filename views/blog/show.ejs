@@ -2,14 +2,21 @@
 
 <link rel="stylesheet" type="text/css" href="/stylesheets/show.css">
 
-<div style="width:60%; margin:6rem auto 0">
-    <h3><%= blog.title%></h3>
-    <em><h5><%= blog.author.username%></h5></em>
-    <span><em>Written <%= moment(blog.createdAt).fromNow()%></em></span>
-    <hr class="style-two">
-</div>
-<div class="container">
-    <%= blog.description%>
+<div class="row">
+    <div class="col-md-3">
+        
+    </div>
+    <div class="col-md-9">
+        <div style="width:60%; margin:6rem auto 0">
+            <h3><%= blog.title%></h3>
+            <em><h5><%= blog.author.username%></h5></em>
+            <span><em>Written <%= moment(blog.createdAt).fromNow()%></em></span>
+            <hr class="style-two">
+        </div>
+        <div class="container">
+            <%= blog.description%>
+        </div>
+    </div>
 </div>
 
 <%- include("../partials/footer"); -%>
