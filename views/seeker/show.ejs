@@ -1,6 +1,7 @@
 <%- include("../partials/header"); -%>
 
 <link rel="stylesheet" type="text/css" href="/stylesheets/sideBar.css">
+<link rel="stylesheet" type="text/css" href="/stylesheets/show.css">
 
 <div>
     <div id="mySidenav" class="sidenav" style="margin-top:57px">
@@ -25,9 +26,14 @@
         <div class="row">
             <div class="col-md-8">
                 <div>
-                    <h2>Your Contributions</h2>
+                    <li id="no_bullet"><h2>Your Contributions</h2></li>
                     <ul>
-                        <li>made blog</li>
+                        <li id="no_bullet"><h5>Blogs written by You</h5></li>
+                        <ul>
+                            <%blogs.forEach(function(blog){%>
+                                <li><a href="/blogs/<%=blog.id%>"><%=blog.title%></a></li>
+                             <% });%>
+                        </ul>
                     </ul>
                 </div>
                 <hr class="mt-2">
@@ -39,8 +45,9 @@
                 </div>
             </div>
             <div class="col-md-4 text-center" id="intro">
-                <img src="https://image.flaticon.com/icons/png/512/16/16363.png" class="img-fluid rounded-circle border" alt="User Profile Image" style="width:40%">
-                <h3>Abhinav Tripathi</h3>
+                <img src="<%=user.avatar%>" class="img-fluid rounded-circle border" alt="User Profile Image" style="width:40%">
+                <h3><%=user.username%></h3>
+                <span><em>Joined <%= moment(user.joinedAt).fromNow()%></em></span>
             </div>
         </div>
     </div>
