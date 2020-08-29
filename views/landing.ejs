@@ -9,12 +9,14 @@
     <% if(!currentUser){%>
         <div class="jumbotron mt-4">
             <h1>Offer jobs</h1>
-            <a href="#" class=" btn btn-primary btn-xs">Get Started</a>
+            <a href="/userLogin" class=" btn btn-primary btn-xs">Get Started</a>
         </div>
+        please login first to access this feature
         <div class="jumbotron">
             <h1>Search jobs</h1>
-            <a href="#" class=" btn btn-primary btn-xs">Let's Search</a>
+            <a href="/userLogin" class=" btn btn-primary btn-xs">Let's Search</a>
         </div>
+        please login first to access this feature
     <% } else if(currentUser.role === 'admin'){%>
         <div class="jumbotron mt-4">
             <h1>Offer jobs</h1>
