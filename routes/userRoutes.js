@@ -1,10 +1,11 @@
 var express = require("express"),
     router = express.Router(),
     User = require("../models/userSchema"),
-    Blog = require("../models/blogSchema");
+    Blog = require("../models/blogSchema"),
+    middleware = require('../middleware');
     
 
-router.get("/provider/:id", function(req, res){
+router.get("/provider/:id", middleware.isLoggedIn,  function(req, res){
     User.findById(req.params.id, function(err,foundUser){
         if(err){
             console.log(err);
@@ -14,10 +15,20 @@ router.get("/provider/:id", function(req, res){
     });
 });
 
-router.get("/seeker/:id", function(req, res){
-    res.render("seeker/show");
+router.get("/seeker/:id", middleware.isLoggedIn,  function(req, res){
+    User.findById(req.params.id, function(err,foundUser){
+        if(err){
+            console.log(err);
+        }else{
+        Blog.find().where('author.id').equals(foundUser._id).exec(function(err,blogs){
+         if(err){
+            res.redirect("/");
+         }
+            res.render("seeker/show", {user:foundUser,blogs:blogs});
+    });
+    }
 });
-
+});
 
 
 module.exports = router;
