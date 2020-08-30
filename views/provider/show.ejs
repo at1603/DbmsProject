@@ -6,10 +6,9 @@
 <div>
     <div id="mySidenav" class="sidenav" style="margin-top:57px">
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
-      <a href="#">Your Profile</a>
+      <a href="/provider/<%=user._id%>/userProfile">Your Profile</a>
       <a href="#">Recruiter Profile</a>
-      <a href="#">Blog</a>
-      <a href="#">Clients</a>
+      <a href="/blogs">Blog</a>
       <a href="#">Contact</a>
     </div>
     
@@ -27,9 +26,14 @@
         <div class="row">
             <div class="col-md-8">
                 <div>
-                    <h2>Your Contributions</h2>
+                    <li id="no_bullet"><h2>Your Contributions</h2></li>
                     <ul>
-                        <li>made blog</li>
+                        <li id="no_bullet"><h5>Recent Blogs written by You</h5></li>
+                        <ul>
+                            <%blogs.forEach(function(blog){%>
+                                <li><a href="/blogs/<%=blog.id%>"><%=blog.title%></a></li>
+                             <% });%>
+                        </ul>
                     </ul>
                 </div>
                 <hr class="mt-2">
