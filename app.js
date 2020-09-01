@@ -7,7 +7,8 @@ var express = require("express"),
     mongoose = require("mongoose");
 
 var User = require("./models/userSchema"),
-    Blog = require("./models/blogSchema");
+    Blog = require("./models/blogSchema"),
+    Employer = require('./models/employerSchema');
     
 var indexRoutes = require('./routes/index'),
     authRoutes = require("./routes/authRoutes"),
