@@ -39,13 +39,16 @@ router.post("/register", function(req, res){
       firstName: req.body.firstname,
       lastName: req.body.lastname,
       avatar: req.body.avatar,
+      phone: req.body.phone,
       email: req.body.email,
       address: req.body.address,
       state: req.body.state,
       zip:req.body.zip,
       city:req.body.city,
-      role:req.body.role
+      role:req.body.userRole
    });
+   //console.log(req.user._id);
+   //console.log(currentUser.id);
    if(req.body.adminCode == 'secretCode123' && req.body.role == 'admin'){
       newUser.isAdmin = true;
    }
@@ -60,6 +63,7 @@ router.post("/register", function(req, res){
          res.redirect("/"); 
       });
    }
+   
 });
 });
 
