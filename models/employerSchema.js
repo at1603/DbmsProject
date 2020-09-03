@@ -14,7 +14,7 @@ var employerSchema = new mongoose.Schema({
     pgrad:String,
     pgradCol:String,
     description:String,
-    user:{
+    handler:{
       id:{
          type:mongoose.Schema.Types.ObjectId,
          ref:"User"
