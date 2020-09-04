@@ -35,7 +35,7 @@ router.get("/provider/:id/userProfile", middleware.isLoggedIn, function(req,res)
                      console.log(err);
                  }
                 res.render("provider/userProfile", {user:foundUser,blogs:blogs,employer:foundEmp});
-                eval(require('locus'));
+                //eval(require('locus'));
              });
          }
     });
