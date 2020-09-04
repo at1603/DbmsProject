@@ -6,7 +6,7 @@
     <div class="col-md-12">
         <div id="header">
             <h3><%= blog.title%></h3>
-            <em><h5><%= blog.author.username%></h5></em>
+            <em><h5><a href="/user/<%=blog.author.id%>/userProfile"><%= blog.author.username%></a></h5></em>
             <span><em>Written <%= moment(blog.createdAt).fromNow()%></em></span>
             <hr class="style-two">
         </div>
