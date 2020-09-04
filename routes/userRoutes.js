@@ -21,7 +21,7 @@ router.get("/provider/:id", middleware.isLoggedIn,  function(req, res){
 });
 });
 
-router.get("/provider/:id/userProfile", middleware.isLoggedIn, function(req,res){
+router.get("/user/:id/userProfile", middleware.isLoggedIn, function(req,res){
     User.findById(req.params.id, function(err,foundUser){
         if(err){
             console.log(err);
@@ -35,7 +35,6 @@ router.get("/provider/:id/userProfile", middleware.isLoggedIn, function(req,res)
                      console.log(err);
                  }
                 res.render("provider/userProfile", {user:foundUser,blogs:blogs,employer:foundEmp});
-                //eval(require('locus'));
              });
          }
     });
