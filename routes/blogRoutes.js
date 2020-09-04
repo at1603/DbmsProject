@@ -12,6 +12,7 @@ router.get("/blogs", function(req, res){
             res.render("blog/index", {blogs:allBlogs}); 
         }
     });
+    
 });
 
 router.post("/blogs", middleware.isLoggedIn, function(req,res){
