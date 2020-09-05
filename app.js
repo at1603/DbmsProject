@@ -9,7 +9,8 @@ var express = require("express"),
 
 var User = require("./models/userSchema"),
     Blog = require("./models/blogSchema"),
-    Employer = require('./models/employerSchema');
+    Employer = require('./models/employerSchema'),
+    Resume = require("./models/resumeSchema");
     
 var indexRoutes = require('./routes/index'),
     authRoutes = require("./routes/authRoutes"),
