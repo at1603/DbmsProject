@@ -3,6 +3,7 @@ var express = require("express"),
     User = require("../models/userSchema"),
     Blog = require("../models/blogSchema"),
     Employer = require("../models/employerSchema"),
+    Resume = require('../models/resumeSchema'),
     middleware = require('../middleware');
     
 
@@ -30,12 +31,23 @@ router.get("/user/:id/userProfile", middleware.isLoggedIn, function(req,res){
          if(err){
             res.redirect("/");
          }else{
-             Employer.find().where('handler.id').equals(foundUser._id).exec(function(err,foundEmp){
-                 if(err){
-                     console.log(err);
-                 }
-                res.render("provider/userProfile", {user:foundUser,blogs:blogs,employer:foundEmp});
-             });
+            if(foundUser.role==="employer"){
+                 Employer.find().where('handler.id').equals(foundUser._id).exec(function(err,foundEmp){
+                     if(err){
+                         console.log(err);
+                     }
+                    res.render("provider/userProfile", {user:foundUser,blogs:blogs,employer:foundEmp});
+                 });
+            }
+            else if(foundUser.role==="worker"){
+                Resume.find().where('handler.id').equals(foundUser._id).exec(function(err, foundRes){
+                   if(err){
+                       console.log(err);
+                   } else{
+                       res.render("seeker/userProfile",{user:foundUser,blogs:blogs,resume:foundRes});
+                   }
+                });
+            }
          }
     });
     }
@@ -49,6 +61,51 @@ router.get("/provider/:id/empProfile", middleware.isLoggedIn, function(req,res){
         }else{
             res.render('provider/createEmpPro', {user:foundUser});  
         }
+    });
+});
+
+
+router.get("/seeker/:id/resume", middleware.isLoggedIn, function(req, res){
+   User.findById(req.params.id, function(err, foundUser){
+       if(err){
+           console.log(err);
+       }else{
+           res.render("seeker/createResume",{user:foundUser})
+       }
+   }) 
+});
+
+router.post("/seeker/:id/resume", middleware.isLoggedIn, function(req,res){
+   var handler = {
+              id: req.user._id,
+              username: req.user.username
+        },
+        proSum = req.body.proSum,
+        empHis = req.body.empHis,
+        edu = req.body.edu,
+        webLink = req.body.webLink, 
+        skills = req.body.skills,
+        lang = req.body.lang,
+        intern = req.body.intern, 
+        exCurri = req.body.exCurri;
+        
+    var newRes = {handler:handler,
+                    proSum:proSum, 
+                    empHis: empHis, 
+                    edu:edu, 
+                    webLink:webLink, 
+                    skills:skills, 
+                    lang:lang, 
+                    intern:intern, 
+                    exCurri:exCurri
+                };
+    
+    Resume.create(newRes, function(err, newResume){
+       if(err){
+           console.log(err);
+       } else{
+           res.redirect("/seeker/"+req.params.id);
+       }
     });
 });
 
