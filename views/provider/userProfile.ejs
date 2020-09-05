@@ -17,7 +17,7 @@
            <div><h5 style="margin-right:5px;display:inline">Address:</h5><p style="display:inline"><%=user.address%></p></div>
         </ul>
         <ul><h2>Profession Details</h2>
-            <%if(!employer[0].handler.id){%>
+            <%if(!employer[0]){%>
                 Your profile isn't complete. Complete your <a href="/provider/<%=user._id%>/empProfile"> profile</a>
             <% }else{%>
                 <div><h5 style="margin-right:5px;display:inline">Works In:</h5><p style="display:inline"><%=employer[0].companyName%></p></div>
