@@ -1,0 +1,77 @@
+<%- include("../partials/header"); -%>
+
+<form action="/seeker/<%=user._id%>/resume" method="POST">
+    <div class="container" style="margin-top:4rem" >
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <div><h5 style="margin-right:5px;display:inline">Name:</h5><p style="display:inline"><%=user.firstName + " " + user.lastName%></p></div>
+            </div>
+            <div class="form-group col-md-6">
+                <div><h5 style="margin-right:5px;display:inline">Email:</h5><p style="display:inline"><%=user.email%></p></div>
+            </div>
+            <div class="form-group col-md-6">
+                <div><h5 style="margin-right:5px;display:inline">Phone Number:</h5><p style="display:inline"><%=user.phone%></p></div>
+            </div>
+            <!--<div class="form-group col-md-6">-->
+            <!--    <label for="inputJobType"></label>-->
+            <!--</div>-->
+        </div>
+        <div class="form-group required">
+            <label>Professional Summary:</label>
+            <textarea rows="2" class="form-control" type="text" name="description" placeholder="Write here....."></textarea>
+        </div>
+        <ul>Education Qualificaiton<sapn> <i class="fa fa-plus" aria-hidden="true"></i></sapn>
+            <div class="form-row">
+                <li class='form-group col-md-8'>
+                    <input type="text" class="form-control" name="edu" id="inputeducation" placeholder="Education qualification">
+                </li>
+            </div>
+        </ul>
+        <ul>Employment History<sapn> <i class="fa fa-plus" aria-hidden="true"></i></sapn>
+            <div class="form-row">
+                <li class='form-group col-md-8'>
+                    <input type="text" class="form-control" name="empHis" id="inputempHis" placeholder="Employment History">
+                </li>
+            </div>
+        </ul>
+        <ul>Skills<sapn> <i class="fa fa-plus" aria-hidden="true"></i></sapn>
+            <div class="form-row">
+                <li class='form-group col-md-8'>
+                    <input type="text" class="form-control" name="skills" id="inputskills" placeholder="Skills">
+                </li>
+            </div>
+        </ul>
+        <ul>Web Link<sapn> <i class="fa fa-plus" aria-hidden="true"></i></sapn>
+            <div class="form-row">
+                <li class='form-group col-md-8'>
+                    <input type="text" class="form-control" name="webLink" id="inputLinks" placeholder="Link">
+                </li>
+            </div>
+        </ul>
+        <ul>Language<sapn> <i class="fa fa-plus" aria-hidden="true"></i></sapn>
+            <div class="form-row">
+                <li class='form-group col-md-8'>
+                    <input type="text" class="form-control" name="lang" id="inputLanguage" placeholder="Language">
+                </li>
+            </div>
+        </ul>
+        <ul>Internships<sapn> <i class="fa fa-plus" aria-hidden="true"></i></sapn>
+            <div class="form-row">
+                <li class='form-group col-md-8'>
+                    <input type="text" class="form-control" name="intern" id="inputInterships" placeholder="Internships">
+                </li>
+            </div>
+        </ul>
+        <ul>Extra Curricular Activities<sapn> <i class="fa fa-plus" aria-hidden="true"></i></sapn>
+            <div class="form-row">
+                <li class='form-group col-md-8'>
+                    <input type="text" class="form-control" name="exCurri" id="inputexCurri" placeholder="Extra Curricular Activities">
+                </li>
+            </div>
+        </ul>
+    </div>
+    
+</form>
+
+
+<%- include("../partials/footer"); -%>
