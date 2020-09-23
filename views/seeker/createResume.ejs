@@ -12,66 +12,128 @@
             <div class="form-group col-md-6">
                 <div><h5 style="margin-right:5px;display:inline">Phone Number:</h5><p style="display:inline"><%=user.phone%></p></div>
             </div>
-            <!--<div class="form-group col-md-6">-->
-            <!--    <label for="inputJobType"></label>-->
-            <!--</div>-->
         </div>
         <div class="form-group required">
             <label>Professional Summary:</label>
-            <textarea rows="2" class="form-control" type="text" name="description" placeholder="Write here....."></textarea>
+            <textarea rows="2" class="form-control" type="text" name="proSum" placeholder="Write here....."></textarea>
         </div>
-        <ul>Education Qualificaiton<sapn> <i class="fa fa-plus" aria-hidden="true"></i></sapn>
-            <div class="form-row">
-                <li class='form-group col-md-8'>
-                    <input type="text" class="form-control" name="edu" id="inputeducation" placeholder="Education qualification">
-                </li>
+        <ul>Education Qualificaiton<span> <i class="fa fa-plus" id="eduQua" aria-hidden="true"></i></span>
+            <div class="form-row" style="display:block">
+                <div class="eduQua">
+                    <li class='form-group col-md-8'>
+                        <input type="text" class="form-control" name="edu[]" id="inputeducation" placeholder="Education qualification">
+                    </li>
+                </div>
             </div>
         </ul>
-        <ul>Employment History<sapn> <i class="fa fa-plus" aria-hidden="true"></i></sapn>
-            <div class="form-row">
-                <li class='form-group col-md-8'>
-                    <input type="text" class="form-control" name="empHis" id="inputempHis" placeholder="Employment History">
-                </li>
+        <ul>Employment History<span><i class="fa fa-plus" id="empHis" aria-hidden="true"></i></span>
+            <div class="form-row" style="display:block">
+                <div class="empHis">
+                    <li class='form-group col-md-8'>
+                        <input type="text" class="form-control" name="empHis[]" id="inputempHis" placeholder="Employment History">
+                    </li>
+                </div>
             </div>
         </ul>
-        <ul>Skills<sapn> <i class="fa fa-plus" aria-hidden="true"></i></sapn>
-            <div class="form-row">
-                <li class='form-group col-md-8'>
-                    <input type="text" class="form-control" name="skills" id="inputskills" placeholder="Skills">
-                </li>
+        <ul>Skills<span> <i class="fa fa-plus" id="skills" aria-hidden="true"></i></span>
+            <div class="form-row" style="display:block">
+                <div class="skills">
+                    <li class='form-group col-md-8'>
+                        <input type="text" class="form-control" name="skills[]" id="inputskills" placeholder="Skills">
+                    </li>
+                </div>
             </div>
         </ul>
-        <ul>Web Link<sapn> <i class="fa fa-plus" aria-hidden="true"></i></sapn>
-            <div class="form-row">
-                <li class='form-group col-md-8'>
-                    <input type="text" class="form-control" name="webLink" id="inputLinks" placeholder="Link">
-                </li>
+        <ul>Web Link<span> <i class="fa fa-plus" id="link" aria-hidden="true"></i></span>
+            <div class="form-row" style="display:block">
+                <div class="link">
+                    <li class='form-group col-md-8'>
+                        <input type="text" class="form-control" name="webLink[]" id="inputLinks" placeholder="Link">
+                    </li>
+                </div>
             </div>
         </ul>
-        <ul>Language<sapn> <i class="fa fa-plus" aria-hidden="true"></i></sapn>
-            <div class="form-row">
-                <li class='form-group col-md-8'>
-                    <input type="text" class="form-control" name="lang" id="inputLanguage" placeholder="Language">
-                </li>
+        <ul>Language<span> <i class="fa fa-plus" id="lang" aria-hidden="true"></i></span>
+            <div class="form-row" style="display:block">
+                <div class="lang">
+                    <li class='form-group col-md-8'>
+                        <input type="text" class="form-control" name="lang[]" id="inputLanguage" placeholder="Language">
+                    </li>
+                </div>
             </div>
         </ul>
-        <ul>Internships<sapn> <i class="fa fa-plus" aria-hidden="true"></i></sapn>
-            <div class="form-row">
-                <li class='form-group col-md-8'>
-                    <input type="text" class="form-control" name="intern" id="inputInterships" placeholder="Internships">
-                </li>
+        <ul>Internships<span> <i class="fa fa-plus" id="Intern" aria-hidden="true"></i></span>
+            <div class="form-row" style="display:block">
+                <div class="Intern">
+                    <li class='form-group col-md-8'>
+                        <input type="text" class="form-control" name="intern[]" id="inputInterships" placeholder="Internships">
+                    </li>
+                </div>
             </div>
         </ul>
-        <ul>Extra Curricular Activities<sapn> <i class="fa fa-plus" aria-hidden="true"></i></sapn>
-            <div class="form-row">
-                <li class='form-group col-md-8'>
-                    <input type="text" class="form-control" name="exCurri" id="inputexCurri" placeholder="Extra Curricular Activities">
-                </li>
+        <ul>Extra Curricular Activities<span> <i class="fa fa-plus" id="exCu" aria-hidden="true"></i></span>
+            <div class="form-row" style="display:block">
+                <div class="exCu">
+                    <li class='form-group col-md-8'>
+                        <input type="text" class="form-control" name="exCurri[]" id="inputexCurri" placeholder="Extra Curricular Activities">
+                    </li>
+                </div>
             </div>
         </ul>
     </div>
-    
+    <button type="submit" class="btn btn-primary">Submit!</button>
 </form>
 
+<div>
+    <script>
+        var max_fields = 20;
+        x = 1;
+        
+        $(".fa-plus").on("click", function() {
+        if(x<max_fields)
+        {
+        	x++;
+          var val = this.id;
+          switch (val) {
+            case 'Intern':
+              $("." + val).append("<li class='form-group col-md-6'> <input type='text' class='form-control' name='intern[]' placeholder='Internships'><span><a href='#' class='delete'>Delete</a></span></li>");
+              break;
+            case 'exCu':
+              $("." + val).append("<li class='form-group col-md-6'><input type='text' class='form-control' name='exCurri[]' placeholder='Extra Curricular Activities'><a href='#' class='delete'>Delete</a></li>");
+              break;
+            case 'eduQua':
+                $("."+val).append("<li class='form-group col-md-6'><input type='text' class='form-control' name='edu[]' placeholder='Education qualification'><a href='#' class='delete'>Delete</a></li>");
+                break;
+                
+            case 'empHis':                
+                $("."+val).append("<li class='form-group col-md-6'><input type='text' class='form-control' name='empHis[]' placeholder='Employment History'><a href='#' class='delete'>Delete</a></li>");
+                break;
+                
+            case 'skills':
+                $("."+val).append("<li class='form-group col-md-6'><input type='text' class='form-control' name='skills[]' placeholder='Skills'><a href='#' class='delete'>Delete</a></li>");
+                break;
+                
+            case 'link':                
+                $("."+val).append("<li class='form-group col-md-6'><input type='text' class='form-control' name='webLink[]' placeholder='Web Links'><a href='#' class='delete'>Delete</a></li>");
+                break;
+                
+            case 'lang':                
+                $("."+val).append("<li class='form-group col-md-6'><input type='text' class='form-control' name='lang[]' placeholder='Fluent in Languages'><a href='#' class='delete'>Delete</a></li>");
+                break;
+                
+          }
+        }else{
+        	alert("max");
+        }
+        });
+        
+        $("div").on("click", ".delete", function(e) {
+          e.preventDefault();
+          $(this).parent('li').remove();
+          x--;
+        })
+
+    </script>
+</div>
 
 <%- include("../partials/footer"); -%>
