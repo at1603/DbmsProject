@@ -20,22 +20,7 @@
             <%if(!resume[0]){%>
                 Your profile isn't complete. Complete your <a href="/seeker/<%=user._id%>/resume"> profile</a>
             <% }else{%>
-                <div><h5 style="margin-right:5px;display:inline">Works In:</h5><p style="display:inline"><%=resume[0].companyName%></p></div>
-                <div><h5 style="margin-right:5px;display:inline">Company Address:</h5><p style="display:inline"><%=resume[0].companyAddress.streetAddress+", "+resume[0].companyAddress.city+", "+resume[0].companyAddress.state+", "+resume[0].companyAddress.zip%></p></div>
-                <div><h5 style="margin-right:5px;display:inline">Designation:</h5><p style="display:inline"><%=resume[0].designation%></p></div>
-                <% if(!resume[0].grad){%>
-                    <p>Isn't graduated</p>
-                <% }else{%>
-                    <div><h5 style="margin-right:5px;display:inline">Graduated in:</h5><p style="display:inline"><%=resume[0].grad%></p></div>
-                    <div><h5 style="margin-right:5px;display:inline">Did <%=resume[0].grad%> From:</h5><p style="display:inline"><%=resume[0].gradCol%></p></div>
-                <% }%>
-                <% if(!resume[0].pgrad){%>
-                    <p>Isn't Post graduated</p>
-                <% }else{%>
-                    <div><h5 style="margin-right:5px;display:inline">Post-Graduated in:</h5><p style="display:inline"><%=resume[0].pgrad%></p></div>
-                    <div><h5 style="margin-right:5px;display:inline">Did <%=resume[0].pgrad%> From:</h5><p style="display:inline"><%=resume[0].pgradCol%></p></div>
-                <% }%>
-                <div><h5 style="margin-right:5px;display:inline">About him:</h5><p style="display:inline"><%=resume[0].description%></p></div>
+                <div><h5 style="margin-right:5px;display:inline">About him:</h5><p style="display:inline"><%=resume[0].proSum%></p></div>
             <% }%>
         </ul>
         <ul><h2><%=user.username%>'s activity</h2>
