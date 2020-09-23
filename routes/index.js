@@ -18,7 +18,7 @@ router.get("/contact", function(req, res){
 
 //policy page route
 router.get("/policy/show", function(req, res){
-   res.render("policy/show")
+   res.render("policy/index")
 });
 
 module.exports = router;
