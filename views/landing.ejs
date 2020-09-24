@@ -20,21 +20,21 @@
     <% } else if(currentUser.role === 'admin'){%>
         <div class="jumbotron mt-4">
             <h1>Offer jobs</h1>
-            <a href="/provider/<%=currentUser._id%>" class=" btn btn-primary btn-xs">Get Started</a>
+            <a href="/searchPage/<%=currentUser._id%>" class=" btn btn-primary btn-xs">Get Started</a>
         </div>
         <div class="jumbotron">
             <h1>Search jobs</h1>
-            <a href="/seeker/<%=currentUser._id%>" class=" btn btn-primary btn-xs">Let's Search</a>
+            <a href="/searchPage/<%=currentUser._id%>" class=" btn btn-primary btn-xs">Let's Search</a>
         </div>
     <% } else if(currentUser.role === 'employer') { %>
         <div class="jumbotron mt-4">
             <h1>Offer jobs</h1>
-            <a href="/provider/<%=currentUser._id%>" class=" btn btn-primary btn-xs">Get Started</a>
+            <a href="/searchPage/<%=currentUser._id%>" class=" btn btn-primary btn-xs">Get Started</a>
         </div>
     <% } else { %>
         <div class="jumbotron mt-4">
             <h1>Search jobs</h1>
-            <a href="/seeker/<%=currentUser._id%>" class=" btn btn-primary btn-xs">Let's Search</a>
+            <a href="/searchPage/<%=currentUser._id%>" class=" btn btn-primary btn-xs">Let's Search</a>
         </div>
     <% } %>
     <div class="jumbotron">
