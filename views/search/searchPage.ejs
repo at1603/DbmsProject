@@ -1,0 +1,27 @@
+<%- include("../partials/header"); -%>
+
+<div class="container" style="margin-top: 4rem">
+    <form action="/searchPage/<%=user.id%>" method="POST">
+        <div class='shadow p-3 mb-1 bg-white rounded mt-5'>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                 <label for="inputQual">Qualification</label>
+                  <select id="inputQual" class="form-control" name="qual">
+                    <option selected>Choose...</option>
+                    <option value="btech">B.Tech</option>
+                    <option value="ba">B.A.</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-6">
+                 <label for="inputLoc">Location</label>
+                  <select id="inputLoc" class="form-control" name="loc">
+                    <option selected>Choose...</option>
+                    <option value="mumbai">Mumbai</option>
+                    <option value="kanpur">Kanpur</option>
+                  </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-outline-success" style="margin:auto; display: block; width: 30%">Submit!</button>
+        </div>
+    </form>
+</div>
