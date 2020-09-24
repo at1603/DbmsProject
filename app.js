@@ -10,12 +10,14 @@ var express = require("express"),
 var User = require("./models/userSchema"),
     Blog = require("./models/blogSchema"),
     Employer = require('./models/employerSchema'),
-    Resume = require("./models/resumeSchema");
+    Resume = require("./models/resumeSchema"),
+    Job = require("./models/jobSchema");
     
 var indexRoutes = require('./routes/index'),
     authRoutes = require("./routes/authRoutes"),
     blogRoutes = require("./routes/blogRoutes"),
-    userRoutes = require('./routes/userRoutes');
+    userRoutes = require('./routes/userRoutes'),
+    searchRoutes = require('./routes/searchRoutes');
 
 mongoose.connect("mongodb://localhost:27017/jobpost", {useNewUrlParser: true, useUnifiedTopology: true});
 app.use(bodyParser.urlencoded({extended: true}));
@@ -48,6 +50,7 @@ app.use(indexRoutes);
 app.use(authRoutes);
 app.use(blogRoutes);
 app.use(userRoutes);
+app.use(searchRoutes);
 
 
 app.listen(process.env.PORT, process.env.IP, function(){
