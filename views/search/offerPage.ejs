@@ -7,48 +7,63 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="inputTypeofJob">Type of Job</label>
-                    <select id="inputTypeofJob" class="form-control" name="ToJob">
+                    <select required id="inputTypeofJob" class="form-control" name="ToJob">
                         <option selected>Choose...</option>
                         <option value="frontenddev">Front End Developer</option>
                     </select>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="inputLocofJob">Location of Job</label>
-                    <select id="inputLocation" class="form-control" name="loc">
+                    <select required id="inputLocation" class="form-control" name="loc">
                         <option selected>Choose...</option>
-                        <option value="kanpur">Kanpur</option>
+                        <option value="Kanpur">Kanpur</option>
+                        <option value="Mumbai">Mumbai</option>
                     </select>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="vacancy">Vacancies</label>
-                    <input type="number" class="form-control" name="vacancy" id="inputvac" placeholder="Vacancies">
+                    <input required type="number" class="form-control" name="vacancy" id="inputvac" placeholder="Vacancies">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="inputqual">Qualificaiton Required <i class="fa fa-plus" aria-hidden="true"></i></label>
-                    <select id="inputqual" class="form-control" name="qual">
+                    <select required id="inputqual" class="form-control" name="qual">
                         <option selected>Choose...</option>
-                        <option value="kanpur">B.Tech</option>
+                        <option value="btech">B.Tech</option>
                     </select>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputSalary">Salary Per Annum</label>
-                    <input type="text" class="form-control" name="salary" id="inputsal" placeholder="e.g. 10 lakh, 1 crore">
+                    <input required type="text" class="form-control" name="salary" id="inputsal" placeholder="e.g. 10 lakh, 1 crore">
                 </div>
                 <div class="form-group col-md-6">
                     <lable for="inputlast">Last Date to Apply</lable>
-                    <input type="date" class="form-control" name="lastApply" id="inputDate">
+                    <input required type="date" class="form-control" name="lastApply" id="inputDate">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="PhoneNumber">Phone Number</label>
-                    <input type="text" class="form-control" name="contact" placeholder="Contact Number">
+                    <input required type="text" class="form-control" name="contact" placeholder="Contact Number">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="mail">Mail</label>
-                    <input type="email" class="form-control" name="mail" placeholder="Owner@example.com">
+                    <input required type="email" class="form-control" name="mail" placeholder="Owner@example.com">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputTitle">Title of the Job</label>
+                    <input  required type="text" class="form-control" name="title" placeholder="Job Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputAbout">Descrition of the Job</label>
+                    <input required type="text" class="form-control" name="about" placeholder="Descrition (max 1 or 2 lines)">
+                </div>
+                <div class="form-group col-md-12">
+                    <label>Information about the Job:</label>
+                    <textarea required rows="6" class="form-control" type="text" name="description" placeholder="Write here....."></textarea>
                 </div>
             </div>
         </div>
@@ -56,3 +71,5 @@
     </form>
     <hr style="border: 0;border-bottom: 1px dashed #ccc; background: #999;">
 </div>
+
+<%- include("../partials/footer"); -%>
