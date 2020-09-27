@@ -6,8 +6,8 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                  <label for="inputQual">Qualification</label>
-                  <select id="inputQual" class="form-control" name="qual">
-                    <option selected>Choose...</option>
+                  <select required id="inputQual" class="form-control" name="qual">
+                    <option value="null" selected>Choose...</option>
                     <option value="btech">B.Tech</option>
                     <option value="ba">B.A.</option>
                   </select>
@@ -15,7 +15,7 @@
                 <div class="form-group col-md-6">
                  <label for="inputLoc">Location</label>
                   <select id="inputLoc" class="form-control" name="loc">
-                    <option selected>Choose...</option>
+                    <option value="null" selected>Choose...</option>
                     <option value="mumbai">Mumbai</option>
                     <option value="kanpur">Kanpur</option>
                   </select>
@@ -24,4 +24,23 @@
             <button type="submit" class="btn btn-outline-success" style="margin:auto; display: block; width: 30%">Submit!</button>
         </div>
     </form>
+
+    <% if(flag == 1){ %>
+        <% if(jobs.length > 0){ %>
+            <% jobs.forEach(function(job){ %>
+                
+                <div class="jumbotron">
+                    <h1><%= job.title %></h1>
+                    <h4><%= job.about%></h4>
+                    <h4>Vacancies for Job: <%=job.vacancy%></h4>
+                    <h5>Location of the job: <%= job.location%></h5>
+                </div>
+                
+            <% }); %>
+        <% }else{ %>
+            <h1>OOPS!! No Jobs Found</h1>
+        <% } %>
+    <% } %>
 </div>
+
+<%- include("../partials/footer"); -%>
