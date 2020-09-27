@@ -16,7 +16,10 @@ var jobSchema = new mongoose.Schema({
    },
    lastApply: String,
    contact: String,
-   mail: String
+   mail: String,
+   title: String,
+   about: String,
+   description: String
 });
 
 module.exports = mongoose.model("Job", jobSchema);
