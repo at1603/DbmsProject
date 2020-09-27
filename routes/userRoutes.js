@@ -4,6 +4,7 @@ var express = require("express"),
     Blog = require("../models/blogSchema"),
     Employer = require("../models/employerSchema"),
     Resume = require('../models/resumeSchema'),
+    Job = require("../models/jobSchema"),
     middleware = require('../middleware');
     
 
@@ -15,8 +16,16 @@ router.get("/provider/:id", middleware.isLoggedIn,  function(req, res){
         Blog.find().where('author.id').equals(foundUser._id).exec(function(err,blogs){
          if(err){
             res.redirect("/");
+         }else{
+             Job.find().where('handler.id').equals(foundUser._id).exec(function(err, jobs) {
+                if(err){
+                    console.log(err);
+                    res.redirect("/");
+                }else{
+                    res.render("provider/show", {user:foundUser,blogs:blogs, jobs: jobs});
+                }
+             });
          }
-            res.render("provider/show", {user:foundUser,blogs:blogs});
     });
     }
 });
