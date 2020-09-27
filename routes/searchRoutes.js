@@ -13,7 +13,7 @@ router.get("/searchPage/:id", middleware.isLoggedIn, function(req,res){
         if(err){
             console.log(err);
         }else{
-            res.render("search/searchPage",{user: foundUser});
+            res.render("search/searchPage",{user: foundUser, flag:0});
         }
     })
 });
@@ -26,7 +26,24 @@ router.post("/searchPage/:id",middleware.isLoggedIn, function(req,res){
         if(err){
             console.log(err);
         }else{
-            res.render("search/searchPage", {user:foundUser});
+            if(loc==="null"){
+                Job.find({"qual":qual}).exec(function(err,foundJob){
+                    if(err){
+                        console.log(err);
+                    }else{
+                        res.render("search/searchPage", {user:foundUser, jobs:foundJob, flag:1});
+                    }
+                });
+            }else{
+                Job.find({"qual":qual, "location":loc}).exec(function(err,foundJob){
+                    if(err){
+                        console.log(err);
+                    }else{
+                        res.render("search/searchPage", {user:foundUser, jobs:foundJob, flag:1});
+                    }
+                });
+                
+            }
         }
     });
 });
@@ -53,7 +70,7 @@ router.post("/offerPage/:id",middleware.isLoggedIn, function(req,res){
               id: req.user._id,
               username: req.user.username
         },
-        loc = req.body.location,
+        loc = req.body.loc,
         sal = req.body.salary,
         vac = req.body.vacancy, 
         ToJob = req.body.ToJob,
@@ -61,7 +78,10 @@ router.post("/offerPage/:id",middleware.isLoggedIn, function(req,res){
         qual = req.body.qual,
         lastApply = req.body.lastApply,
         contact = req.body.contact,
-        mail = req.body.mail;
+        mail = req.body.mail,
+        title = req.body.title,
+        about = req.body.about,
+        des = req.body.description;
         
     var newJob = {handler: handler,
                     location: loc,
@@ -71,7 +91,11 @@ router.post("/offerPage/:id",middleware.isLoggedIn, function(req,res){
                     qual: qual,
                     lastApply: lastApply,
                     contact:contact,
-                    mail: mail
+                    mail: mail,
+                    salary: sal,
+                    title: title,
+                    about: about,
+                    description: des
     }
     
     Job.create(newJob, function(err, nJob){
