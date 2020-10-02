@@ -53,6 +53,6 @@ app.use(userRoutes);
 app.use(searchRoutes);
 
 
-app.listen(process.env.PORT, process.env.IP, function(){
+app.listen(3000, function(){
     console.log("server is connected!!");
 });
