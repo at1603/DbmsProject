@@ -97,7 +97,6 @@ router.post("/offerPage/:id",middleware.isLoggedIn, function(req,res){
                     about: about,
                     description: des
     }
-    
     Job.create(newJob, function(err, nJob){
        if(err){
            console.log(err);
