@@ -17,7 +17,8 @@ var indexRoutes = require('./routes/index'),
     authRoutes = require("./routes/authRoutes"),
     blogRoutes = require("./routes/blogRoutes"),
     userRoutes = require('./routes/userRoutes'),
-    searchRoutes = require('./routes/searchRoutes');
+    searchRoutes = require('./routes/searchRoutes'),
+    jobRoutes = require('./routes/jobRoutes');
 
 mongoose.connect("mongodb://localhost:27017/jobpost", {useNewUrlParser: true, useUnifiedTopology: true});
 app.use(bodyParser.urlencoded({extended: true}));
@@ -51,6 +52,7 @@ app.use(authRoutes);
 app.use(blogRoutes);
 app.use(userRoutes);
 app.use(searchRoutes);
+app.use(jobRoutes);
 
 
 app.listen(3000, function(){
