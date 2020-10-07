@@ -1,7 +1,8 @@
 var mongoose = require("mongoose");
 
 var jobSchema = new mongoose.Schema({
-   location: String,
+   state: String,
+   city: String,
    vacancy: Number,
    salary: String,
    ToJob: String,
