@@ -7,13 +7,24 @@
         <div id="header">
             <h3><%= blog.title%></h3>
             <em><h5><a href="/user/<%=blog.author.id%>/userProfile"><%= blog.author.username%></a></h5></em>
+            <% if(currentUser && blog.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+                <div class="outer">
+                    
+                    <form id="delete_form" action="/blogs/<%=blog._id%>?_method=DELETE" method="POST">
+                        <button class="btn btn-sm btn-danger " style="float: right">Delete</button>
+                    </form>
+                    <a id="delete_form" class="btn btn-sm btn-warning" style="float: right; margin-right: 1rem" href="/blogs/<%=blog._id%>/edit">Edit</a>
+                    </div>
+            <% } %>
             <span><em>Written <%= moment(blog.createdAt).fromNow()%></em></span>
-            <hr class="style-two">
         </div>
+        <hr class="style-two">
         <div class="container">
             <%= blog.description%>
         </div>
-        <a href="/blogs" class="btn btn-primary btn-xs">Go Back</a>
+        <div style="margin-left: 2rem;margin-top: 1rem;">
+            <a href="/blogs" class="btn btn-primary btn-xs">Go Back</a>
+        </div>
     </div>
 </div>
 
