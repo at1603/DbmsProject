@@ -1,10 +1,12 @@
 <%- include("../partials/header"); -%>
 
+<script src="/jsFiles/cities.js"></script>
+
 <div class="container" style="margin-top: 4rem">
     <form action="/searchPage/<%=user.id%>" method="POST">
         <div class='shadow p-3 mb-1 bg-white rounded mt-5'>
             <div class="form-row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-12">
                  <label for="inputQual">Qualification</label>
                   <select required id="inputQual" class="form-control" name="qual">
                     <option value="null" selected>Choose...</option>
@@ -12,13 +14,16 @@
                     <option value="ba">B.A.</option>
                   </select>
                 </div>
+            </div>
+            <div class="form row">
                 <div class="form-group col-md-6">
-                 <label for="inputLoc">Location</label>
-                  <select id="inputLoc" class="form-control" name="loc">
-                    <option value="null" selected>Choose...</option>
-                    <option value="mumbai">Mumbai</option>
-                    <option value="kanpur">Kanpur</option>
-                  </select>
+                    <label for="inputstateofJob">State</label>
+                    <select onchange="print_city('state', this.selectedIndex);" id="sts" class="form-control" required ></select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputCityofJob">City</label>
+                    <select id ="state" class="form-control" name="loc" required ></select>
+                    <script language="javascript">print_state("sts");</script>
                 </div>
             </div>
             <button type="submit" class="btn btn-outline-success" style="margin:auto; display: block; width: 30%">Submit!</button>
