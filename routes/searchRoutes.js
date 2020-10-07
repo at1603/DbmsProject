@@ -20,13 +20,16 @@ router.get("/searchPage/:id", middleware.isLoggedIn, function(req,res){
 
 router.post("/searchPage/:id",middleware.isLoggedIn, function(req,res){
    var qual = req.body.qual,
-       loc = req.body.loc;
-    
+       state = req.body.state,
+       city = req.body.city,
+       ToJob = req.body.ToJob;
+
+       console.log(ToJob,qual)
     User.findById(req.params.id, function(err, foundUser){
         if(err){
             console.log(err);
         }else{
-            if(loc==="null"){
+            if(!state && !ToJob){
                 Job.find({"qual":qual}).exec(function(err,foundJob){
                     if(err){
                         console.log(err);
@@ -34,15 +37,48 @@ router.post("/searchPage/:id",middleware.isLoggedIn, function(req,res){
                         res.render("search/searchPage", {user:foundUser, jobs:foundJob, flag:1});
                     }
                 });
-            }else{
-                Job.find({"qual":qual, "location":loc}).exec(function(err,foundJob){
+            }else if(state && !city && !ToJob){
+                Job.find({"qual":qual, "state": state}).exec(function(err,foundJob){
+                    if(err){
+                        console.log(err);
+                    }else{
+                        res.render("search/searchPage", {user:foundUser, jobs:foundJob, flag:1});
+                    }
+                });    
+            }else if(qual && city && state){
+                Job.find({"qual":qual, "city":city, "state": state}).exec(function(err,foundJob){
                     if(err){
                         console.log(err);
                     }else{
                         res.render("search/searchPage", {user:foundUser, jobs:foundJob, flag:1});
                     }
                 });
-                
+            }else if(!state && !qual){
+                Job.find({"ToJob":ToJob}).exec(function(err,foundJob){
+                    if(err){
+                        console.log(err);
+                    }else{
+                        res.render("search/searchPage", {user:foundUser, jobs:foundJob, flag:1});
+                    }
+                });
+            }else if(state && !city && !qual){
+                Job.find({"ToJob":ToJob, "state": state}).exec(function(err,foundJob){
+                    if(err){
+                        console.log(err);
+                    }else{
+                        res.render("search/searchPage", {user:foundUser, jobs:foundJob, flag:1});
+                    }
+                });    
+            }else if(ToJob && city && state){
+                Job.find({"ToJob":ToJob, "city":city, "state": state}).exec(function(err,foundJob){
+                    if(err){
+                        console.log(err);
+                    }else{
+                        res.render("search/searchPage", {user:foundUser, jobs:foundJob, flag:1});
+                    }
+                });
+            }else{
+                res.render(res.render("search/searchPage", {user:foundUser, flag:2}));
             }
         }
     });
@@ -70,7 +106,8 @@ router.post("/offerPage/:id",middleware.isLoggedIn, function(req,res){
               id: req.user._id,
               username: req.user.username
         },
-        loc = req.body.loc,
+        city = req.body.city,
+        state = req.body.state,
         sal = req.body.salary,
         vac = req.body.vacancy, 
         ToJob = req.body.ToJob,
@@ -84,7 +121,8 @@ router.post("/offerPage/:id",middleware.isLoggedIn, function(req,res){
         des = req.body.description;
         
     var newJob = {handler: handler,
-                    location: loc,
+                    city: city,
+                    state: state,
                     vacancy:vac,
                     ToJob: ToJob,
                     skill: skill,
