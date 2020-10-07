@@ -1,5 +1,7 @@
 <%- include("../partials/header"); -%>
 
+<script src="/jsFiles/cities.js"></script>
+
 <script type="text/javascript">
   function checkAdmin(val)
   {
@@ -70,6 +72,15 @@
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
+              <label for="inputstateofJob">State</label>
+              <select onchange="print_city('state', this.selectedIndex);" id="sts" class="form-control" name="state" required ></select>
+          </div>
+          <div class="form-group col-md-4">
+              <label for="inputCityofJob">City</label>
+              <select id ="state" class="form-control" name="city" required ></select>
+              <script language="javascript">print_state("sts");</script>
+          </div>
+          <!-- <div class="form-group col-md-6">
             <label for="inputCity">City</label>
             <input type="text" class="form-control" name="city" id="inputCity">
           </div>
@@ -114,7 +125,7 @@
               <option value="Uttarakhand">Uttarakhand</option>
               <option value="West Bengal">West Bengal</option>
             </select>
-          </div>
+          </div> -->
           <div class="form-group col-md-2">
             <label for="inputZip">Zip</label>
             <input type="text" class="form-control" name="zip" id="inputZip">
@@ -127,7 +138,7 @@
                 <option value="worker">Worker</option>
                 <option value="admin">Admin</option>
               </select>
-          </div>
+          </div> 
           <div class="form-group col-md-6" id="role" style='display:none'>
             <label for="adminCode">Admin Code</label>
             <input type="password" class="form-control" name="adminCode" placeholder="Admin Code(optional)">
