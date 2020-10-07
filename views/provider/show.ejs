@@ -43,17 +43,47 @@
                         <li>Pankaj Sharma</li>
                     </ul>
                 </div>
-                <div class="mt-2">
-                    <h3>Jobs offered: </h3>
-                    <% jobs.forEach(function(job){%>
-                        <h5><%= job.title %> at <%=job.location%></h5>
-                    <% })%>
-                </div>
             </div>
             <div class="col-md-4 text-center" id="intro">
                 <img src="<%=user.avatar%>" class="img-fluid rounded-circle border" alt="User Profile Image" style="width:40%">
                 <h3><%=user.username%></h3>
                 <span><em>Joined <%= moment(user.joinedAt).fromNow()%></em></span>
+            </div>
+            <div class="col-md-12 mt-2">
+                <!-- table -->
+                <h3>Jobs Offered</h3>
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Job Title</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Vacancy</th>
+                        <th scope="col">Last Date</th>
+                        <th scope="col">Action</th>
+                        <th scope="col">Remarks</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <% count = 0 %>
+                        <% jobs.forEach(function(job){ count += 1%>
+                            <tr>
+                                <th scope="row"><%=count %></th>
+                                <td><%= job.title%> </td>
+                                <td><%= job.location%></td>
+                                <td><%= job.vacancy%></td>
+                                <td><%= job.lastApply%></td>
+                                <td><a class="btn btn-xs btn-warning" style="margin-right: 1rem;" href="#">Edit</a><a class="btn btn-xs btn-outline-danger" href="#">Delete</a></td>
+                                <td> <%if(moment().isAfter(job.lastApply)){ %> 
+                                        <p>Expired</p>
+                                    <% } else { %>
+                                        <p>Available</p>
+                                    <% } %>
+                                </td>
+                            </tr>
+                        <% })%>
+                    </tbody>
+                  </table>
             </div>
         </div>
     </div>
