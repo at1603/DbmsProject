@@ -2,31 +2,122 @@
 
 <script src="/jsFiles/cities.js"></script>
 
+<script>
+    $(document).ready(function() {
+        $("input[name$='searchMethod']").click(function() {
+            var test = $(this).val();
+
+            $("div.desc").hide();
+            $("#mt" + test).show();
+        });
+    });
+</script>
+
 <div class="container" style="margin-top: 4rem">
     <form action="/searchPage/<%=user.id%>" method="POST">
         <div class='shadow p-3 mb-1 bg-white rounded mt-5'>
             <div class="form-row">
-                <div class="form-group col-md-12">
-                 <label for="inputQual">Qualification</label>
-                  <select required id="inputQual" class="form-control" name="qual">
-                    <option value="null" selected>Choose...</option>
-                    <option value="btech">B.Tech</option>
-                    <option value="ba">B.A.</option>
-                  </select>
+                <div class="form-group col-md-6">
+                    <input type="radio" id="sm1" name="searchMethod" checked="checked" value="1">
+                    <label for="sm1" style="margin-left: 3px;"><h5>Search By Education Qualification</h5></label>
                 </div>
+
+                <div class="form-group col-md-6">
+                    <input type="radio" name="searchMethod" value="2">
+                    <label for="sm1"  style="margin-left: 3px;"><h5>Search By Job Type</h5></label>
+                </div>
+            </div>
+
+            <div id="mt1" class="desc">
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                    <label for="inputQual">Qualification</label>
+                    <select required id="inputQual" class="form-control" name="qual">
+                        <option selected="selected" disabled="disabled">-- select one --</option>
+                        <option value="No formal education">No formal education</option>
+                        <option value="Primary education">Primary education</option>
+                        <option value="Secondary education">Secondary education or high school</option>
+                        <option value="General Education Diploma">General Education Diploma</option>
+                        <option value="Vocational qualification">Vocational qualification</option>
+                        <option value="Bachelor's degree">Bachelor's degree</option>
+                        <option value="Master's degree">Master's degree</option>
+                        <option value="Doctorate or higher">Doctorate or higher</option>
+                    </select>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="mt2" class="desc" style="display: none;">
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="inputTypeofJob">Type of Job</label>
+                        <select required id="inputTypeofJob" class="form-control" name="ToJob">
+                            <option selected="selected" disabled="disabled">-- select one --</option>
+                            <optgroup label="Healthcare Practitioners and Technical Occupations:">
+                              <option value="Chiropractor">-  Chiropractor</option>
+                              <option value="Dentist">-  Dentist</option>
+                              <option value="Dietitian">-  Dietitian</option>
+                              <option value="Physician">-  Physician</option>
+                              <option value="Physician Assistan">-  Physician Assistant</option>
+                              <option value="Therapist">-  Therapist</option>
+                              <option value="Veterinarian">-  Veterinarian</option>
+                              <option value="Technician">-  Technician</option>
+                            </optgroup>
+                            <optgroup label="Healthcare Support Occupations:">
+                              <option value="Home Health Aide">-  Home Health Aide</option>
+                            </optgroup>
+                            <optgroup label="Business, Executive, Management, and Financial Occupations:">
+                              <option value="Chief Executive">-  Chief Executive</option>
+                              <option value="Operations Manager">-  General and Operations Manager</option>
+                              <option value="Sales Manager">-  Sales Manager</option>
+                              <option value="Engineering Manager">-  Engineering Manager</option>
+                            </optgroup>
+                            <optgroup label="Architecture and Engineering Occupations:">
+                              <option value="Cartographer">-  Cartographer</option>
+                              <option value="Engineer">-  Engineer</option>
+                            </optgroup>
+                            <optgroup label="Education, Training, and Library Occupations:">
+                              <option value="Postsecondary Teacher">-  Postsecondary Teacher (e.g., College Professor)</option>
+                              <option value="Primary Teacher">-  Primary Teacher</option>
+                            </optgroup>
+                            <optgroup label="Other Professional Occupations:">
+                              <option value="Computer Specialist">-  Computer Specialist</option>
+                              <option value="Social Worker">-  Social Worker</option>
+                              <option value="Counselor">-  Counselor</option>
+                              <option value="Lawyer">-  Lawyer</option>
+                            </optgroup>
+                            <optgroup label="Office and Administrative Support Occupations:">
+                              <option value="Supervisor of Administrative Support Workers">-  Supervisor of Administrative Support Workers</option>
+                              <option value="Financial Clerk">-  Financial Clerk</option>
+                            </optgroup>
+                            <optgroup label="Services Occupations:">
+                              <option value="Chef">-  Chef</option>
+                              <option value="Sales Representative">-  Sales Representative</option>
+                            </optgroup>
+                            <optgroup label="Agriculture, Maintenance, Repair, and Skilled Crafts Occupations:">
+                              <option value="Construction and Extraction">-  Construction and Extraction (e.g., Construction Laborer, Electrician)</option>
+                              <option value="Farming, Fishing, and Forestry">-  Farming, Fishing, and Forestry</option>
+                              <option value="Installation, Maintenance, and Repair">-  Installation, Maintenance, and Repair</option>
+                              <option value="Production Occupations">-  Production Occupations</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
+
             </div>
             <div class="form row">
                 <div class="form-group col-md-6">
                     <label for="inputstateofJob">State</label>
-                    <select onchange="print_city('state', this.selectedIndex);" id="sts" class="form-control" required ></select>
+                    <select onchange="print_city('state', this.selectedIndex);" id="sts" class="form-control"></select>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="inputCityofJob">City</label>
-                    <select id ="state" class="form-control" name="loc" required ></select>
+                    <select id ="state" class="form-control" name="loc"></select>
                     <script language="javascript">print_state("sts");</script>
                 </div>
+                <button type="submit" class="btn btn-outline-success" style="margin:auto; display: block; width: 30%">Submit!</button>
             </div>
-            <button type="submit" class="btn btn-outline-success" style="margin:auto; display: block; width: 30%">Submit!</button>
         </div>
     </form>
 
@@ -36,15 +127,17 @@
                 
                 <div class="jumbotron">
                     <h1><%= job.title %></h1>
-                    <h4><%= job.about%></h4>
+                    <strong><%= job.about%></p></strong><p>
                     <h4>Vacancies for Job: <%=job.vacancy%></h4>
-                    <h5>Location of the job: <%= job.location%></h5>
+                    <h5>Location of the Job: <%= job.city%>, <%= job.state%></h5>
                 </div>
                 
             <% }); %>
         <% }else{ %>
             <h1>OOPS!! No Jobs Found</h1>
         <% } %>
+    <% } else { %>
+        <h1>Please fill required information!</h1>
     <% } %>
 </div>
 
