@@ -48,4 +48,38 @@ router.get("/blogs/:id", function(req, res){
   });
 });
 
+//edit page route
+router.get("/blogs/:id/edit", function(req,res){
+    Blog.findById(req.params.id, function(err, foundBlog){
+        if(err){
+            res.redirect("blogs/edit");
+        }else{
+            res.render("blog/edit", {blog:foundBlog});  
+        }
+    });
+});
+
+//update route
+router.put("/blogs/:id", function(req,res){
+    Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, updateBlog){
+       if(err){
+           res.redirect("/blogs");
+       }else{
+           res.redirect("/blogs/"+req.params.id);
+       }
+    });
+ });
+
+//delete route
+router.delete("/blogs/:id", function(req, res){
+    Blog.findByIdAndRemove(req.params.id, function(err,){
+        if(err){
+            res.redirect("/blogs");
+        }else{
+            // req.flash("success", "Campground Successfully Deleted");
+            res.redirect("/blogs");
+        }
+    });
+});
+
 module.exports = router;
