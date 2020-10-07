@@ -70,10 +70,17 @@
                             <tr>
                                 <th scope="row"><%=count %></th>
                                 <td><%= job.title%> </td>
-                                <td><%= job.location%></td>
+                                <td><%= job.city%>, <%= job.state%></td>
                                 <td><%= job.vacancy%></td>
                                 <td><%= job.lastApply%></td>
-                                <td><a class="btn btn-xs btn-warning" style="margin-right: 1rem;" href="#">Edit</a><a class="btn btn-xs btn-outline-danger" href="#">Delete</a></td>
+                                <td>
+                                    <div style="display: inline;">
+                                    <form id="delete_form" action="/jobs/<%=job._id%>?_method=DELETE" method="POST">
+                                        <button class="btn btn-sm btn-danger" style="width: 4rem;">Delete</button>
+                                    </form>
+                                    <a class="btn btn-sm btn-warning" style="width: 4rem; margin-right: 1rem;" href="/jobs/<%=job._id%>/edit">Edit</a>
+                                    </div>
+                                </td>
                                 <td> <%if(moment().isAfter(job.lastApply)){ %> 
                                         <p>Expired</p>
                                     <% } else { %>
