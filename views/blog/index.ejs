@@ -40,10 +40,11 @@
                             <img src="<%= blog.image%>" class="img-fluid">
                         </div>
                         <div class="card-title">
-                            <h4><%= blog.name %></h4>  
+                            <h4><strong><%= blog.title %></strong</h4>  
+                            <h5 style="font: 18px Arial, sans-serif;margin-top: 0.5rem"><strong>Genre:</strong> <%= blog.genre%></h5>
                         </div>
                         <p>
-                            <a href="/blogs/<%= blog._id%>" class="btn btn-primary">More Info</a>
+                            <a href="/blogs/<%= blog._id%>" class="btn btn-outline-success">More Info</a>
                         </p>
                     </div>
                 </div>
