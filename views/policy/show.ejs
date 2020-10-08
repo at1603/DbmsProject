@@ -1,9 +1,22 @@
 <%- include("../partials/header"); -%>
 
 <div class="container">
-    <h1>this is policy page</h1>
+    <div class="row" style="margin-top: 6rem;">
+        <div class="col-md-12">
+            <div id="header">
+                <h3><%= policy.polHead%></h3>
+                <h5><strong>For: </strong><%= policy.relTo%></h5>
+                <span><em>Published on: <%= moment(policy.createdAt).format('LL')%></em></span>
+            </div>
+            <hr>
+            <div class="container">
+                <%= policy.polDesc%>
+            </div>
+            <div style="margin-left: 2rem;margin-top: 1rem;">
+                <a href="/policy" class="btn btn-secondary btn-xs">Go Back</a>
+            </div>
+        </div>
+    </div>
 </div>
-
-<a href="/" class="btn btn-xs btn-primary">Go Back!</a>
 
 <%- include("../partials/footer"); -%>
