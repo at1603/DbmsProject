@@ -47,9 +47,7 @@ router.post("/register", function(req, res){
       city:req.body.city,
       role:req.body.userRole
    });
-   //console.log(req.user._id);
-   //console.log(currentUser.id);
-   if(req.body.adminCode == 'secretCode123' && req.body.role == 'admin'){
+   if(req.body.adminCode === 'secretCode123' && req.body.userRole === 'admin'){
       newUser.isAdmin = true;
    }
    User.register(newUser, req.body.password, function(err, user){
