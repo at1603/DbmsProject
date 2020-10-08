@@ -9,41 +9,37 @@
     <% if(!currentUser){%>
         <div class="jumbotron mt-4">
             <h1>Offer jobs</h1>
-            <a href="/userLogin" class=" btn btn-primary btn-xs">Get Started</a>
+            <a href="/userLogin" class=" btn btn-success btn-xs">Get Started</a>
         </div>
         please login first to access this feature
         <div class="jumbotron">
             <h1>Search jobs</h1>
-            <a href="/userLogin" class=" btn btn-primary btn-xs">Let's Search</a>
+            <a href="/userLogin" class=" btn btn-success btn-xs">Let's Search</a>
         </div>
         please login first to access this feature
     <% } else if(currentUser.role === 'admin'){%>
         <div class="jumbotron mt-4">
-            <h1>Offer jobs</h1>
-            <a href="/offerPage/<%=currentUser._id%>" class=" btn btn-primary btn-xs">Get Started</a>
-        </div>
-        <div class="jumbotron">
             <h1>Search jobs</h1>
-            <a href="/searchPage/<%=currentUser._id%>" class=" btn btn-primary btn-xs">Let's Search</a>
+            <a href="/searchPage/<%=currentUser._id%>" class=" btn btn-success btn-xs">Let's Search</a>
         </div>
     <% } else if(currentUser.role === 'employer') { %>
         <div class="jumbotron mt-4">
             <h1>Offer jobs</h1>
-            <a href="/offerPage/<%=currentUser._id%>" class=" btn btn-primary btn-xs">Get Started</a>
+            <a href="/offerPage/<%=currentUser._id%>" class=" btn btn-success btn-xs">Get Started</a>
         </div>
     <% } else { %>
         <div class="jumbotron mt-4">
             <h1>Search jobs</h1>
-            <a href="/searchPage/<%=currentUser._id%>" class=" btn btn-primary btn-xs">Let's Search</a>
+            <a href="/searchPage/<%=currentUser._id%>" class=" btn btn-success btn-xs">Let's Search</a>
         </div>
     <% } %>
     <div class="jumbotron">
         <h1>Policies</h1>
-        <a href="/policy/show" class=" btn btn-primary btn-xs">See Policies</a>
+        <a href="/policy" class=" btn btn-success btn-xs">See Policies</a>
     </div>
     <div class="jumbotron">
         <h1>Blogs</h1>
-        <a href="/blogs" class=" btn btn-primary btn-xs">Explore</a>
+        <a href="/blogs" class=" btn btn-success btn-xs">Explore</a>
     </div>
 </div>
 <%- include("./partials/footer"); -%>
