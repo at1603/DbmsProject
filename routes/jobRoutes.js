@@ -10,7 +10,7 @@ var express = require("express"),
 
 
 //job edit route
-router.get("/jobs/:id/edit", function(req,res){
+router.get("/jobs/:id/edit", middleware.checkJobOwnership, function(req,res){
     Job.findById(req.params.id, function(err, foundJob){
         if(err){
             res.redirect("/");
@@ -21,7 +21,7 @@ router.get("/jobs/:id/edit", function(req,res){
 });
 
 //update route
-router.put("/jobs/:id", function(req,res){
+router.put("/jobs/:id", middleware.checkJobOwnership, function(req,res){
     Job.findByIdAndUpdate(req.params.id, req.body.job, function(err, upadateJob){
        if(err){
            res.redirect("/");
@@ -33,7 +33,7 @@ router.put("/jobs/:id", function(req,res){
 
 
 //job delete route
-router.delete("/jobs/:id", function(req, res){
+router.delete("/jobs/:id", middleware.checkJobOwnership, function(req, res){
     Job.findByIdAndRemove(req.params.id, function(err,){
         if(err){
             res.redirect("/");
