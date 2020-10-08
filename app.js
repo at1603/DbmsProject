@@ -18,7 +18,9 @@ var indexRoutes = require('./routes/index'),
     blogRoutes = require("./routes/blogRoutes"),
     userRoutes = require('./routes/userRoutes'),
     searchRoutes = require('./routes/searchRoutes'),
-    jobRoutes = require('./routes/jobRoutes');
+    jobRoutes = require('./routes/jobRoutes'),
+    policyRoutes = require('./routes/policyRoutes');
+
 
 mongoose.connect("mongodb://localhost:27017/jobpost", {useNewUrlParser: true, useUnifiedTopology: true});
 app.use(bodyParser.urlencoded({extended: true}));
@@ -42,7 +44,6 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use(function(req, res, next){
-    //console.log(req.user);
    res.locals.currentUser = req.user;
    next();
 });
@@ -53,7 +54,7 @@ app.use(blogRoutes);
 app.use(userRoutes);
 app.use(searchRoutes);
 app.use(jobRoutes);
-
+app.use(policyRoutes);
 
 app.listen(3000, function(){
     console.log("server is connected!!");
