@@ -49,7 +49,7 @@ router.get("/blogs/:id", function(req, res){
 });
 
 //edit page route
-router.get("/blogs/:id/edit", function(req,res){
+router.get("/blogs/:id/edit", middleware.checkBlogOwnership, function(req,res){
     Blog.findById(req.params.id, function(err, foundBlog){
         if(err){
             res.redirect("blogs/edit");
@@ -60,7 +60,7 @@ router.get("/blogs/:id/edit", function(req,res){
 });
 
 //update route
-router.put("/blogs/:id", function(req,res){
+router.put("/blogs/:id", middleware.checkBlogOwnership, function(req,res){
     Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, updateBlog){
        if(err){
            res.redirect("/blogs");
@@ -71,7 +71,7 @@ router.put("/blogs/:id", function(req,res){
  });
 
 //delete route
-router.delete("/blogs/:id", function(req, res){
+router.delete("/blogs/:id", middleware.checkBlogOwnership, function(req, res){
     Blog.findByIdAndRemove(req.params.id, function(err,){
         if(err){
             res.redirect("/blogs");
