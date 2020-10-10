@@ -1,10 +1,11 @@
 # Job Portal
 
-A simple website allowing people to seach jobs.
+A simple website allowing people to offer and search jobs and interact with other people on the other side of the world.
+People can share their experiences and knowledge by posting it on a blog. They can also keep themshelves updated with the latest policies and news by browsing them on policy page.   
 
 # How to run
 
-To run this project, clone it into local directory and run following commands: 
+To run this project, clone it into your local directory and run following commands: 
 
 ```run
 npm install  
