@@ -5,7 +5,13 @@ People can share their experiences and knowledge by posting it on a blog. They c
 
 # How to run
 
-To run this project, clone it into your local directory and run following commands: 
+To run this project,  
+
+Clone the directory in your local storage using: 
+```clone
+git clone https://github.com/Pro-Abhinav/DbmsProject.git
+```
+then run following commands in command prompt after going inside the project folder  
 
 ```run
 npm install  
