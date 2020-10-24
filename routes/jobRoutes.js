@@ -13,6 +13,7 @@ var express = require("express"),
 router.get("/jobs/:id/edit", middleware.checkJobOwnership, function(req,res){
     Job.findById(req.params.id, function(err, foundJob){
         if(err){
+            req.flash("error", "Requested Job not found!")
             res.redirect("/");
         }else{
             res.render("provider/jobEdit", {job:foundJob});  
@@ -24,8 +25,10 @@ router.get("/jobs/:id/edit", middleware.checkJobOwnership, function(req,res){
 router.put("/jobs/:id", middleware.checkJobOwnership, function(req,res){
     Job.findByIdAndUpdate(req.params.id, req.body.job, function(err, upadateJob){
        if(err){
+            req.flash("error", "Something went wrong!")
            res.redirect("/");
        }else{
+            req.flash("success", "Job details updated succesfully!")
            res.redirect("/");
        }
     });
@@ -36,8 +39,10 @@ router.put("/jobs/:id", middleware.checkJobOwnership, function(req,res){
 router.delete("/jobs/:id", middleware.checkJobOwnership, function(req, res){
     Job.findByIdAndRemove(req.params.id, function(err,){
         if(err){
+            req.flash("error", "Job not found!")
             res.redirect("/");
         }else{
+            req.flash("success", "Job Successfully deleted!")
             res.redirect("/");
         }
     });
