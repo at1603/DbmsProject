@@ -88,7 +88,9 @@ router.post("/searchPage/:id",middleware.isLoggedIn, function(req,res){
 router.get("/offerPage/:id", middleware.isLoggedIn, function(req,res){
     User.findById(req.params.id, function(err, foundUser){
         if(err){
+            req.flash("error", "Something went wrong!")
             console.log(err);
+            res.redirect("/offerpage");
         }else{
             Employer.find().where('handler.id').equals(foundUser._id).exec(function(err, foundEmp){
                if(err){
@@ -137,8 +139,10 @@ router.post("/offerPage/:id",middleware.isLoggedIn, function(req,res){
     }
     Job.create(newJob, function(err, nJob){
        if(err){
+           req.flash("error", "Something went wrong!")
            console.log(err);
        } else{
+           req.flash("success", "Job succesfully posted! ")
            res.redirect("/");
        }
     });
