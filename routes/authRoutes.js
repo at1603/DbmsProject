@@ -6,6 +6,7 @@ var express = require("express"),
 
 //Login get requests
 router.get('/userLogin', function(req,res){
+   // console.log(req.flash(error));
    res.render("login/userLogin"); 
 });
 
@@ -14,15 +15,18 @@ router.get('/userLogin', function(req,res){
 router.post("/userLogin", passport.authenticate("local", 
 {
     successRedirect: "/", 
-    failureRedirect: "/userlogin"
+    failureRedirect: "/userlogin",
+    failureFlash : true,
+    successFlash: 'Welcome! '
     }),function(req, res){
+
 });
 
 //logout 
 
 router.get("/logout", middleware.isLoggedIn, function(req,res){
    req.logout();
-   // req.flash("success", "Logged Out");
+   req.flash("success", "Logged Out Successfully! ");
    res.redirect("/");
 });
 
@@ -52,12 +56,11 @@ router.post("/register", function(req, res){
    }
    User.register(newUser, req.body.password, function(err, user){
       if(err){
-          console.log(err);
-          //return res.render("register", {error: err.message});
+          req.flash("error", err.message);
           res.redirect("/register");
       }else{
       passport.authenticate("local")(req, res, function(){
-         //req.flash("success", "Welcome to YelpCamp " + user.username);
+         req.flash("success", "Welcome to JOBify " + user.username);
          res.redirect("/"); 
       });
    }
