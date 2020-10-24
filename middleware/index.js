@@ -7,6 +7,7 @@ middlewareObj.isLoggedIn = function(req,res,next){
     if(req.isAuthenticated()){
         return next();
     }
+    req.flash("error", "Please Login First");
     res.redirect("/userLogin");
 }
 
@@ -22,6 +23,7 @@ middlewareObj.checkJobOwnership = function(req,res,next){
                 {
                     next();
                 }else{
+                    req.flash("error", "Permission Denied! Wrong User.")
                     res.redirect("back");
                 }
                 
@@ -38,6 +40,7 @@ middlewareObj.checkBlogOwnership = function(req, res, next){
     if(req.isAuthenticated()){
         Blog.findById(req.params.id, function(err, foundBlog){
            if(err){
+               req.flash("error", "Something Bad Happened!")
                res.redirect("back");
            }else{
                 //does the user own the campground
@@ -45,6 +48,7 @@ middlewareObj.checkBlogOwnership = function(req, res, next){
                 {
                     next();
                 }else{
+                    req.flash("error", "Permission Denied! Wrong User.")
                     res.redirect("back");
                 }
                 
