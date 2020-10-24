@@ -9,6 +9,7 @@ router.get('/policy', function(req,res){
     var admin = req.user.isAdmin;
     Policy.find({}, function(err, allPolicies){
         if(err){
+            req.flash("error", "Something went wrong!")
             console.log(err);
         }else{
             res.render("policy/index", {policies:allPolicies, isAdmin: admin}); 
@@ -28,6 +29,7 @@ router.post('/policy', function(req,res){
         polDesc:req.body.polDesc};
     Policy.create(newPolicy, function(err, newlyCreated){
         if(err){
+            req.flash("error", "Something went wrong!")
             console.log(err);
         }else{
                 res.redirect("/policy");
@@ -39,6 +41,7 @@ router.post('/policy', function(req,res){
 router.get('/policy/:id/show', function(req, res){
     Policy.findById(req.params.id, function(err, foundPolicy){
         if(err){
+            req.flash("error", "Policy not found!")
             res.redirect("/policy/index");
         }else{
             res.render("policy/show", {policy:foundPolicy});  
@@ -49,6 +52,7 @@ router.get('/policy/:id/show', function(req, res){
 router.get('/policy/:id/edit', function(req, res){
     Policy.findById(req.params.id, function(err, foundPolicy){
         if(err){
+            req.flash("error", "Policy not found!")
             res.redirect("policy/edit");
         }else{
             res.render("policy/edit", {policy:foundPolicy});  
@@ -60,8 +64,10 @@ router.get('/policy/:id/edit', function(req, res){
 router.put('/policy/:id', function(req,res){
     Policy.findByIdAndUpdate(req.params.id, req.body.policy, function(err, updatePolicy){
         if(err){
+            req.flash("error", "Policy not found!")
             res.redirect("/policy");
         }else{
+            req.flash("error", "Policy details succesfully updated!")
             res.redirect("/policy");
         }
      });
@@ -71,8 +77,10 @@ router.put('/policy/:id', function(req,res){
 router.delete('/policy/:id', function(req, res){
     Policy.findByIdAndRemove(req.params.id, function(err){
         if(err){
+            req.flash("error", "Policy not found!")
             res.redirect("/policy");
         }else{
+            req.flash("success", "Policy succesfully deleted!")
             res.redirect("/policy");
         }
     });
