@@ -19,8 +19,5 @@ nodemon
 ```
 
 ### Author
-Abhinav Tripathi
+Abhinav Tripathi  
 abhinav16032002@gmail.com
-
-
-<meta name='keywords' content='regex, regular expressions, regexp'>
