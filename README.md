@@ -7,7 +7,9 @@ People can share their experiences and knowledge by posting it on a blog. They c
 
 To run this project,  
 
-Clone the directory in your local storage using: 
+You have to install mongodb in your system and connect the database to the project.
+
+Then, Clone the directory in your local storage using: 
 ```clone
 git clone https://github.com/Pro-Abhinav/DbmsProject.git
 ```
