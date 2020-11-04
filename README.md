@@ -18,3 +18,9 @@ npm install
 nodemon 
 ```
 
+### Author
+Abhinav Tripathi
+abhinav16032002@gmail.com
+
+
+<meta name='keywords' content='regex, regular expressions, regexp'>
